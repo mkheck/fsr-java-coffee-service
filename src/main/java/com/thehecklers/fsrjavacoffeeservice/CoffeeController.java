@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/*
+    // MAH: Disabling this to enable RouteConfig functional route configuration (either/or)
 @RestController
 @RequestMapping("/coffees")
+*/
 public class CoffeeController {
     private final CoffeeService service;
 
