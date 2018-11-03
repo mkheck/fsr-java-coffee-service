@@ -3,6 +3,8 @@ package com.thehecklers.fsrjavacoffeeservice;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Objects;
+
 @Document
 public class Coffee {
     @Id
@@ -35,6 +37,20 @@ public class Coffee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coffee coffee = (Coffee) o;
+        return Objects.equals(id, coffee.id) &&
+                Objects.equals(name, coffee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override

@@ -1,10 +1,14 @@
 package com.thehecklers.fsrjavacoffeeservice;
 
 import java.time.Instant;
+import java.util.Objects;
 
 public class CoffeeOrder {
-    private final String coffeeId;
-    private final Instant whenOrdered;
+    private String coffeeId;
+    private Instant whenOrdered;
+
+    public CoffeeOrder() {
+    }
 
     public CoffeeOrder(String coffeeId, Instant whenOrdered) {
         this.coffeeId = coffeeId;
@@ -17,6 +21,20 @@ public class CoffeeOrder {
 
     public Instant getWhenOrdered() {
         return whenOrdered;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoffeeOrder that = (CoffeeOrder) o;
+        return Objects.equals(coffeeId, that.coffeeId) &&
+                Objects.equals(whenOrdered, that.whenOrdered);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(coffeeId, whenOrdered);
     }
 
     @Override
